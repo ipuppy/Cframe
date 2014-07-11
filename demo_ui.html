@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>index</title>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.cframe.ui.js"></script>
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+<style>
+body{
+	margin:0;
+	padding:20px;
+	height:1500px;
+	width:1000px;
+	text-align:left;
+	font:14px/20px arial;}
+html{
+	background:#FFF;}
+dd{
+	margin-bottom:15px;}
+code{
+	margin-top:15px;
+	color:#333;
+	font-size:12px;
+	line-height:18px;}
+</style>
+</head>
+
+<body>
+<h1>Cframe demo page: Cframe.ui</h1>
+<a href="demo_core.html">Click to checkout Cframe.core</a>
+<dl>
+<dt>Part 1: select box</dt>
+<dd>
+<div id="num" class="selectbox" data-checked="">
+  	<div>How many users does your app have?</div>
+    <ul>
+    	<li data-value="1">0-1000</li>
+      <li data-value="2">1000-10000</li>
+      <li data-value="3">10000-100000</li>
+    </ul>
+</div>
+</dd>
+<dd> <input type="button" value="show selected" onclick="alert($('#num').attr('data-checked'))" /></dd>
+</dl>
+<dl>
+<dt>Part 2: check box</dt>
+<dd>
+<div class="check-box" onselectstart="javascript:return false;">
+      <span data-checked="1" style="background-image:url(images/checked.png);">iOS</span>
+      <span data-checked="0" style="margin-right:30px;">Android</span>
+      <span data-checked="0">Web</span>
+</div><br />
+</dd>
+<dd> <input type="button" value="show checked" onclick="alert($('.check-box>span[data-checked=1]'))" /></dd>
+</dl>
+<dl>
+<dt>Part 3: input box</dt>
+<dd>
+<div class="input-box">
+	<input type="text" value="" />
+  <span>this is value</span>
+</div></dd></dl>
+<dl>
+<dt>Part 4: image carousel</dt>
+<dd>
+<div id="imgCarousel">
+  <div id="imgBox">
+        <img style="display:block;" src="images/sdk_home_banner_1.jpg" />
+        <img src="images/sdk_home_banner_2.jpg" />
+        <img src="images/sdk_home_banner_3.jpg" />
+        <img src="images/sdk_home_banner_4.jpg" />
+  </div>
+  <div class="imgBox_Dir" id="imgBox_Left"></div>
+  <div class="imgBox_Dir" id="imgBox_Right"></div>
+  <ul id="btn"></ul>
+</div>
+</dd>
+<dd>Params:<br />
+Cui.imgCarousel("#imgBox","#btn","relContent");
+"#imgBox" is for element placed img<br />
+"#btn" is for element swith element<br />
+"relContent" is for relative content of img box<br />
+</dd>
+<dd>Tips:<br />
+btn's children will generate according to img number.<br />
+relContent is optional.<br />
+left and right button is optional.</dd>
+<dd>Config items:<br />
+effectSpeed=500;<br />
+carouselSpeed=5000;<br />
+focusClass = "focusClass";
+</dd>
+</dl>
+<dl>
+<dt>Part 5: Back to top</dt>
+<dd>This page will emerge back-to-top button when line is over 200</dd>
+<dd>
+Config items:<br />
+<pre><code>setting:{
+		startline:200,
+		scrollto:0,
+		scrollduration:400,
+		fadeduration:[500,100]
+	},
+	controlHTML:'&lt;img src="images/back.png" style="width:58px; height:50px; border:0;" /&gt;', 
+	controlattrs:{offsetx:30,offsety:80},
+	anchorkeyword:"#top",
+	state:{
+		isvisible:false,
+		shouldvisible:false</code></pre>
+</dd></dl>
+</body>
+<script>
+Cui.imgCarousel("#imgBox","#btn");
+</script>
+</html>

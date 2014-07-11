@@ -1,0 +1,32 @@
+<div id="login">
+<div class="Cclose" style="width:30px; height:30px; background:#0FF; position:absolute; right:5px; top:5px; cursor:pointer;">&times;</div>
+	<h1>Login</h1>
+  <form action="http://192.168.0.211:1314/user/login" method="post" ajax="myCallback">
+  	<input name="email" type="text" />
+    <input name="password" type="password" />
+    <input type="button" value="call Cverify to check email" />
+		<input type="submit" value="send" data-ing="sending" />
+  </form>
+</div>
+
+<script>
+function checkForm(form){
+	alert(Cverify.email(form.id.value))
+	return false;
+	}
+function myCallback(d)
+{
+	result=parseInt(d.result);
+			if(result==1){
+				alert("成功")
+				//location="/account.html?from=add";
+				}
+			else{
+				switch(result){
+					case 2:
+					case 3:
+					default:alert(d.msg);
+				}
+		}
+	}
+</script>

@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>index</title>
+<script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="js/jquery.cframe.core.js"></script>
+<link rel="stylesheet" type="text/css" href="css/css.css" />
+<style>
+body{
+	margin:0;
+	padding:20px;
+	height:1500px;
+	width:1000px;
+	text-align:left;
+	font:14px/20px arial;}
+html{
+	background:#FFF;}
+dd{
+	margin-bottom:15px;}
+code{
+	margin-top:15px;
+	color:#333;
+	font-size:12px;
+	line-height:18px;}
+</style>
+</head>
+
+<body>
+<h1>Cframe demo page: Cframe.core</h1>
+<a href="demo_ui.html">Click to checkout Cframe.ui</a>
+<dl>
+<dt>Part 1: Cdialog</dt>
+<dd>You can use Cdialog to show ajax element like this:<br />
+Cdialog.show('login');<br />
+<button onclick="Cdialog.show('login');">show ajax element</button>
+</dd>
+<dd>Also, for existed element, it will auto detect if it has already existed.<br />
+<button onclick="Cdialog.show('reg');">show existed element</button>
+</dd>
+<dd>For this part, following config is available:<br />
+  <code>showMask: true,			//show mask<br />
+		isScroll:false,			//auto detect scroll<br />
+		zIndex: 1000,				//z-index of the mask<br />
+		scrollBar: 0,				//auto calc scrollbar width</code></dd>
+</dl>
+<dl>
+<dt>Part 2: Cverify</dt>
+<dd>Use Cverify to check validity for input value, like this:<br />
+Cverify.email(form.id.value);<br />
+<input id="email" value="mail@sdong.org" type="text" /><input type="button"  onclick="alert(Cverify.email(getElementById('email').value))" value="check" /></dd>
+<dd>Cverify have following members:<br />
+  <code>Cverify.email<br />
+Cverify.password<br />
+Cverify.domain</code></dd>
+
+</dl>
+
+<dl>
+<dt>Part 3: Cajax</dt>
+<dd>You can use Cajax to set form as ajax request form only by adding ajax="callback" attribute to the form:<br />
+&lt;form action="ajax url" ajax="myCallback"&gt;<br />
+<form action="http://192.168.0.211:1314/user/login" method="post" ajax="myCallback">
+  	<input name="email" type="text" />
+    <input name="password" type="password" />
+		<input class="" type="submit" value="send" data-ing="sending" />
+  </form></dd>
+<dd>It will encode the data and post all input to form action url.<br />
+And callback in ajax="callback" will be called when ajax has done.<br />
+You can define callbakc like "function callback(json){alert(json.msg);}"<br />
+It means the return value is a json object if your server return json like:<br />
+{"result":"1","msg":"success","others":"data"}</dd>
+</dl>
+<dl>
+<dt>Part 4: Cothers</dt>
+<dd>Cothers includes opCookie and getParam at present.<br />
+Cothers.opCookie has 3 overloads.<br />
+<code>
+opCookie("name","value"); //set cookie<br />
+opCookie("get","value");	//get cookie<br />
+opCookie("del","value");	//delete cookie<br />
+</code><br />
+Dont's forget config expire time and path.<br />
+</dd>
+
+<dd>
+Cothers.getParam can use like:<br />
+getParam("id");<br />
+Try to get Querystring param named "id"<br />
+<input type="button" value="getParam" onclick="alert(Cothers.getParam('id'))" />
+</dd>
+</dl>
+<div id="reg" style="display:none; width:300px; background:#0FF; height:200px;">
+<div class="Cclose" style="width:30px; height:30px; background:#0FF; position:absolute; right:5px; top:5px; cursor:pointer;">&times;</div>
+	<h1>reg</h1>
+  <form action="" method="get">
+  	<input name="id" type="text" />
+    <input name="pwd" type="password" />
+    <input type="submit" />
+  </form>
+</div>
+</div>
+</body>
+</html>
